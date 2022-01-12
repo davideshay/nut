@@ -1,5 +1,7 @@
 # nut-upsd
 
+(ORIGINAL readme below from gpmd, has been modified to work with k8s)
+
 This is the **nut-upsd** docker image, which implements the UPS drivers and the upsd daemon from https://networkupstools.org/.
 
 The idea behind this implementation is to have a generic container, which supports monitoring multiple UPS devices from the same container.
