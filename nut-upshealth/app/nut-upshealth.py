@@ -1,5 +1,3 @@
-print("DOES THIS PART FUCKING WORK???????",flush=True)
-
 import pyNUT, threading, time
 
 from http.server import BaseHTTPRequestHandler, HTTPServer
@@ -10,7 +8,7 @@ from socket import error as socket_error
 
 nut_connected = False
 
-def start_pyNUT(nut_tries=12):
+def start_pyNUT(nut_tries=15):
 	print("Connecting to UPS, tries left : ",nut_tries,flush=True)
 	global nut_connected
 	global nut
@@ -21,6 +19,7 @@ def start_pyNUT(nut_tries=12):
 		print("Successfully Connected to UPS",flush=True)
 	except socket_error as e:
 		print("Failed to connect to UPS",flush=True)
+		time.sleep(10)
 		if nut_tries > 0:
 			start_pyNUT(nut_tries-1)
 
