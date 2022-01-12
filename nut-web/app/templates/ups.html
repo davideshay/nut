@@ -1,0 +1,48 @@
+<html>
+<style>
+  .mystatus tr td:first-child{
+    width:1%;
+    white-space:nowrap;
+  }
+</style>
+<title>UPS INFO</title>
+<body>
+  <h1>Basic UPS Info</h1>
+  <table>
+  <tr><td rowspan=3><img src='/static/{{upsvars["status_img"]}}' width="30px"></td><td>Manufacturer</td><td>{{upsvars["device.mfr"]}}</td></tr>
+  <tr><td>Model</td><td>{{upsvars["device.model"]}}</td></tr>
+  <tr><td>Serial #</td><td>{{upsvars["device.serial"]}}</td></tr>
+  </table>
+  <h2>UPS Status:</h2>
+  <table class="mystatus" width="75%">
+  <tr><td>Status</td><td>{{upsvars["status_decode"]}}</td></tr>
+  <tr>
+    <td>Battery Charge</td>
+    <td><div style="background:linear-gradient(90deg,{{upsvars['battery.color']}} {{upsvars['battery.charge']}}%,white {{upsvars['battery.charge']}}%);border:1px solid black"><div style="margin:0;text-align:center;width:{{upsvars['battery.charge']}}%">{{upsvars["battery.charge"]}}%</div></div></td></tr>
+  <tr>
+    <td>Battery Runtime</td>
+    <td><div style="background:linear-gradient(90deg,whitesmoke {{upsvars['battery.runtime.low.per']}}%,
+        {{upsvars['battery.color']}} {{upsvars['battery.runtime.low.per']}}%,
+        {{upsvars['battery.color']}} {{upsvars['battery.runtime.per']}}%,
+        white {{upsvars['battery.runtime.per']}}%);
+        border:1px solid black">
+        <div style="margin:0;text-align:center;display:inline-block;width:{{upsvars['battery.runtime.low.per']*0.99}}%">{{upsvars["battery.runtime.low"]//60}}:{{ "{:02d}".format(upsvars["battery.runtime.low"]%60)}}</div>
+        <div style="margin:0;text-align:center;display:inline-block;width:{{(upsvars['battery.runtime.per']-upsvars['battery.runtime.low.per'])*0.99}}%">{{(upsvars["battery.runtime"]-upsvars["battery.runtime.low"])//60}}:{{ "{:02d}".format((upsvars["battery.runtime"]-upsvars["battery.runtime.low"])%60)}}</div>
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+      <div style="margin:0;text-align:center;display:inline-block;width:{{upsvars['battery.runtime.low.per']*0.99}}%">Shutdown</div>
+      <div style="margin:0;text-align:center;display:inline-block;width:{{(upsvars['battery.runtime.per']-upsvars['battery.runtime.low.per'])*0.99}}%">Remaining</div>
+    </td>
+  </tr>
+  <tr>
+    <td>UPS Load</td>
+    <td><div style="background:linear-gradient(90deg,{{upsvars['load.color']}} {{upsvars['ups.load']}}%,white {{upsvars['ups.load']}}%);border:1px solid black"><div style="margin:0;text-align:center;width:{{upsvars['ups.load']}}%">{{upsvars["ups.load"]}}%</div></div></td></tr>
+  </tr>
+  <tr><td>Battery Voltage</td><td>{{upsvars["battery.voltage"]}}</td></tr>
+  <tr><td>Input Voltage</td><td>{{upsvars["input.voltage"]}}</td></tr>
+</body>
+</html>
