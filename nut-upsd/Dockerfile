@@ -12,7 +12,7 @@ RUN apk add --no-cache nut
 
 COPY files/startup.sh /startup.sh
 
-COPY files/old-startup.sh /old-startup.sh
+# COPY files/old-startup.sh /old-startup.sh
 
 COPY files/etc/nut /etc/nut
 
