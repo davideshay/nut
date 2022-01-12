@@ -1,6 +1,6 @@
 # nut-upsd
 
-(ORIGINAL docs below. Has been modified to support k8s)
+(ORIGINAL docs below. Has been modified to support k8s -- original was from gpmd)
 
 
 This is the **nut-upsd** docker image, which implements the UPS drivers and the upsd daemon from https://networkupstools.org/.
